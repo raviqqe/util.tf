@@ -1,6 +1,7 @@
 # util.tf
 
 [![Build Status](https://travis-ci.org/raviqqe/util.tf.svg?branch=master)](https://travis-ci.org/raviqqe/util.tf)
+[![License](https://img.shields.io/badge/license-unlicense-lightgray.svg)](https://unlicense.org)
 
 TensorFlow utilities
 
