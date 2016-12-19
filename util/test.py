@@ -12,6 +12,7 @@ class TestFunctions(unittest.TestCase):
   T1 = tf.constant([True, False, True], tf.bool)
   T2 = tf.constant([[1, 2], [3, 4.2]], tf.float32)
   Ts = [T0, T1, T2]
+  FLOAT_TYPES = [tf.float32, tf.float64]
 
   def test_static_shape(self):
     self.assertEqual(static_shape(self.T0), [])
@@ -44,6 +45,20 @@ class TestFunctions(unittest.TestCase):
       self.assertEqual(dimension_indices(T), [*range(i)])
 
     self.assertEqual(dimension_indices(self.T2, 1), [1])
+
+  def test_dtype_min(self):
+    for float_type in self.FLOAT_TYPES:
+      min = dtype_min(float_type)
+      self._assert_bool_tensor(min > -np.inf)
+      self._assert_bool_tensor(min < -10**8)
+
+  def _assert_bool_tensor(self, tensor):
+    self.assertTrue(run(tensor))
+
+
+def run(tensor):
+  with tf.Session() as session:
+    return session.run(tensor)
 
 
 if __name__ == "__main__":
