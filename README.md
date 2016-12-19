@@ -1,5 +1,7 @@
 # util.tf
 
+[![Build Status](https://travis-ci.org/raviqqe/util.tf.svg?branch=master)](https://travis-ci.org/raviqqe/util.tf)
+
 TensorFlow utilities
 
 
