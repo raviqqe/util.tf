@@ -58,6 +58,16 @@ class TestFunctions(unittest.TestCase):
       self._assert_bool_tensor(epsilon > 0)
       self._assert_bool_tensor(epsilon < 1e-6)
 
+  def test_flatten(self):
+    for T in self.Ts[1:]:
+      self.assertEqual(static_rank(flatten(T)), 1)
+      self.assertEqual(flatten(T).get_shape().num_elements(),
+                       T.get_shape().num_elements())
+
+  def test_rename(self):
+    name = "foo"
+    self.assertEqual(rename(tf.constant(42), "foo").name.split(':')[0], name)
+
   def _assert_bool_tensor(self, tensor):
     self.assertTrue(run(tensor))
 
