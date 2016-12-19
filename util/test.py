@@ -50,7 +50,13 @@ class TestFunctions(unittest.TestCase):
     for float_type in self.FLOAT_TYPES:
       min = dtype_min(float_type)
       self._assert_bool_tensor(min > -np.inf)
-      self._assert_bool_tensor(min < -10**8)
+      self._assert_bool_tensor(min < -1e8)
+
+  def test_dtype_epsilon(self):
+    for float_type in self.FLOAT_TYPES:
+      epsilon = dtype_epsilon(float_type)
+      self._assert_bool_tensor(epsilon > 0)
+      self._assert_bool_tensor(epsilon < 1e-6)
 
   def _assert_bool_tensor(self, tensor):
     self.assertTrue(run(tensor))
