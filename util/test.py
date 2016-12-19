@@ -18,6 +18,13 @@ class TestFunctions(unittest.TestCase):
     self.assertEqual(static_shape(self.T1), [3])
     self.assertEqual(static_shape(self.T2), [2, 2])
 
+  def test_static_rank(self):
+    for i, T in enumerate(self.Ts):
+      self.assertEqual(static_rank(T), i)
+
+  def test_static_shapes(self):
+    self.assertEqual(static_shapes(*self.Ts), [[], [3], [2, 2]])
+
   def test_dimension_indices(self):
     for i, T in enumerate(self.Ts):
       self.assertEqual(dimension_indices(T), [*range(i)])
