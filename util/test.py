@@ -25,6 +25,20 @@ class TestFunctions(unittest.TestCase):
   def test_static_shapes(self):
     self.assertEqual(static_shapes(*self.Ts), [[], [3], [2, 2]])
 
+  def test_dtypes(self):
+    self.assertEqual(dtypes(*self.Ts), [tf.int32, tf.bool, tf.float32])
+
+  def test_func_scope(self):
+    @func_scope()
+    def foo(): pass
+
+    @func_scope("baz")
+    def bar(): pass
+
+  def test_on_device(self):
+    @on_device("cpu:0")
+    def foo(): pass
+
   def test_dimension_indices(self):
     for i, T in enumerate(self.Ts):
       self.assertEqual(dimension_indices(T), [*range(i)])
