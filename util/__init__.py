@@ -1,3 +1,4 @@
+import doctest
 import functools
 
 import numpy
@@ -164,3 +165,7 @@ def rename(tensor, name):
     Renamed Tensor object.
   """
   return tf.identity(tensor, name)
+
+
+if __name__ == "__main__":
+  doctest.testmod()
