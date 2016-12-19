@@ -66,7 +66,7 @@ class TestFunctions(unittest.TestCase):
 
   def test_rename(self):
     name = "foo"
-    self.assertEqual(rename(tf.constant(42), "foo").name.split(':')[0], name)
+    self.assertEqual(rename(tf.constant(42), name).name.split(':')[0], name)
 
   def _assert_bool_tensor(self, tensor):
     self.assertTrue(run(tensor))
