@@ -29,6 +29,8 @@ class TestFunctions(unittest.TestCase):
     for i, T in enumerate(self.Ts):
       self.assertEqual(dimension_indices(T), [*range(i)])
 
+    self.assertEqual(dimension_indices(self.T2, 1), [1])
+
 
 if __name__ == "__main__":
   unittest.main()
